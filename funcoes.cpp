@@ -31,7 +31,7 @@ void funcoes::zerar_prof() {
     for (int j = 0; j < 10; j++) {
         for (int i = 0; i < 10; i++) {
             this->professores[j].turma[i] = 0;
-            
+
         }
     }
 }
@@ -40,7 +40,7 @@ void funcoes::zerar_resultado() {
     for (int j = 0; j < 10; j++) {
         for (int i = 0; i < 10; i++) {
             this->resultado[j].turma[i] = 0;
-           
+
         }
     }
 }
@@ -106,9 +106,9 @@ void funcoes::arquivo_man() {
         }
         cout <<endl;
     }*/
-this->linhas_matriz = 0;
-    for (m; m <= this->cont_linhas; m++) {
-        
+    this->linhas_matriz = 0;
+    for (m; vetor[m] != "#"; m++) {
+
         if (this->vetor[m] == "%") {
             int coluna = 0;
             int q;
@@ -118,7 +118,7 @@ this->linhas_matriz = 0;
                 stringstream ss;
                 ss << this->vetor[q];
                 ss >> this->matriz[this->linhas_matriz][coluna];
-                
+
 
                 if (coluna == 9) {
                     break;
@@ -129,13 +129,37 @@ this->linhas_matriz = 0;
             this->indice_colunas[this->linhas_matriz] = coluna - 1;
             this->linhas_matriz++;
         }
-        
+
+
     }
+    
+    for (m++; vetor[m] != "!"; m++){
+        if (!isNumber(this->vetor[m])){
+            for (k = 0; k < this->cont_prof; k++){
+                if (this->vetor[m] == professores[k].nome){
+                    
+                    int i = 0;
+                    int n;
+                    for (n = m + 1; isNumber(this->vetor[n]); n++ ){
+                        stringstream ss;
+                        ss << this->vetor[n];
+                        ss >>this->resultado[k].turma[i];
+                        
+                        
+                        i++;
+                         
+                       
+                    
+                }
+            }
+        }
+    }
+    
+
+
 }
-   
-       
-        
-  
+}
+
 void funcoes::zerar_matriz() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -147,9 +171,9 @@ void funcoes::zerar_matriz() {
 void funcoes::grafo() {
     bool verifica = true;
     bool verifica2 = true;
-    
 
-    
+
+
 
 
     int turma, turmaC, proff;
@@ -206,10 +230,9 @@ void funcoes::grafo() {
 
 }
 
-
-void funcoes::imprime_resultado(){
+void funcoes::imprime_resultado() {
     for (int j = 0; j < 3; j++) {
-        cout <<this->professores[j].nome<<": ";
+        cout << this->professores[j].nome << ": ";
         for (int i = 0; i < 10; i++) {
             if (this->resultado[j].turma[i] == 0)
                 break;

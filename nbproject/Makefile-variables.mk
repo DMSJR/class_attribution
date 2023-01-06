@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=projetinho_1
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/projetinho_1
+CND_ARTIFACT_NAME_Debug=class_attribution
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/class_attribution
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=projetinho1.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/projetinho1.tar
+CND_PACKAGE_NAME_Debug=classattribution.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/classattribution.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=projetinho_1
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/projetinho_1
+CND_ARTIFACT_NAME_Release=class_attribution
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/class_attribution
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=projetinho1.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/projetinho1.tar
+CND_PACKAGE_NAME_Release=classattribution.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/classattribution.tar
 #
 # include compiler specific variables
 #
