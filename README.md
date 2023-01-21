@@ -14,6 +14,4 @@ reference number for a class time
 classes that happen at that time (integer, one for each line)
 %
 information about the next class time
-# 
-to attribute a class to a specific teacher directly add the name of the teacher, followed by the number of each class you wish to attribute, one for line.
-! ends the file
+# ends the file
