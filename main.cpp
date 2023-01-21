@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     obj.zerar_matriz();
     obj.zerar_prof();
     obj.zerar_resultado();
+    obj.zerar_not_attributed();
     obj.arquivo_man();
     obj.grafo();
     obj.imprime_resultado();
