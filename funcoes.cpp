@@ -45,9 +45,9 @@ void funcoes::zerar_resultado() {
     }
 }
 
-void funcoes::zerar_not_attributed(){
+void funcoes::zerar_not_attributed() {
     this->not_attributed.nome = "not attributed";
-    for (int i =0; i<10; i++){
+    for (int i = 0; i < 10; i++) {
         this->not_attributed.turma[i] = 0;
     }
 }
@@ -102,7 +102,8 @@ void funcoes::arquivo_man() {
             }
         } else {
             professores[k].nome = vetor[m];
-            this->cont_prof++;
+            // cout << professores[k].nome;
+
             j = 0;
         }
 
@@ -139,32 +140,32 @@ void funcoes::arquivo_man() {
 
 
     }
-    
-    for (m++; vetor[m] != "!"; m++){
-        if (!isNumber(this->vetor[m])){
-            for (k = 0; k < this->cont_prof; k++){
-                if (this->vetor[m] == professores[k].nome){
-                    
+
+    for (m++; vetor[m] != "!"; m++) {
+        if (!isNumber(this->vetor[m])) {
+            for (k = 0; k < this->cont_prof; k++) {
+                if (this->vetor[m] == professores[k].nome) {
+
                     int i = 0;
                     int n;
-                    for (n = m + 1; isNumber(this->vetor[n]); n++ ){
+                    for (n = m + 1; isNumber(this->vetor[n]); n++) {
                         stringstream ss;
                         ss << this->vetor[n];
                         ss >>this->resultado[k].turma[i];
-                        
-                        
+
+
                         i++;
-                         
-                       
-                    
+
+
+
+                    }
                 }
             }
         }
+
+
+
     }
-    
-
-
-}
 }
 
 void funcoes::zerar_matriz() {
@@ -179,27 +180,39 @@ void funcoes::grafo() {
     bool verifica = true;
     bool verifica2 = true;
     bool verifica3 = true;
+    bool verifica4 = true;
 
 
 
 
 
     int turma, turmaC, proff, w = 0;
-    
+
     for (int i = 0; i < this->linhas_matriz; i++) {
 
         for (int j = 1; j <= this->indice_colunas[i]; j++) {
 
 
             turma = matriz[i][j];
-
-            for (int r = 0; r < this->cont_prof; r++) {
+            int r;
+            verifica4 = true;
+            for (r = 0; r < this->cont_prof; r++) {
 
                 for (int b = 0; b < 10; b++) {
-                    if ((this->professores[r].turma[b] == turma)) {
+                    if (this->professores[r].turma[b] == turma) {
                         verifica2 = false;
 
                     }
+                }
+                
+                for (int b = 0; b <10; b++){
+                    if (this->resultado[r].turma[b] == turma){
+                        verifica4 = false;
+                    }
+                }
+                if (verifica4 == false){
+                    
+                    break;
                 }
                 verifica = true;
                 for (int n = 0; n < 10; n++) {
@@ -217,29 +230,41 @@ void funcoes::grafo() {
                     }
                 }
                 proff = r;
-                if (verifica == true)
+                if (verifica == true) {
+                    if (this->resultado[proff].turma[0] == 0) {
+                        this->resultado[proff].turma[0] = turma;
+
+                    } else {
+                        for (int p = 9; p >= 0; p--) {
+                            if (this->resultado[proff].turma[p] != 0) {
+                                this->resultado[proff].turma[p + 1] = turma;
+
+                                break;
+                            }
+                        }
+                    }
                     break;
+                }
+
                 verifica = true;
                 verifica2 = true;
+
             }
-            if (this->resultado[proff].turma[0] == 0) {
-                this->resultado[proff].turma[0] = turma;
+            if (r == this->cont_prof) {
                 verifica3 = false;
-            } else {
-                for (int p = 9; p >= 0; p--) {
-                    if (this->resultado[proff].turma[p] != 0) {
-                        this->resultado[proff].turma[p + 1] = turma;
-                        verifica3 = false;
-                        break;
-                    }
-                }
+
             }
+
+
             verifica = true;
-            if (verifica3 == true){
+            if (verifica3 == false) {
+
                 this->not_attributed.turma[w] = turma;
+
                 w++;
             }
-            
+            verifica3 = true;
+
         }
     }
 
@@ -255,5 +280,16 @@ void funcoes::imprime_resultado() {
 
         }
         cout << endl;
+
+    }
+    if (this->not_attributed.turma[0] != 0) {
+        cout << "Turmas não atribuidas: ";
+    }
+    for (int j = 0; j < 10; j++) {
+        if (this->not_attributed.turma[j] == 0) {
+            break;
+        }
+        cout << this->not_attributed.turma[j] << "\t";
+
     }
 }
