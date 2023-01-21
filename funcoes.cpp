@@ -45,6 +45,13 @@ void funcoes::zerar_resultado() {
     }
 }
 
+void funcoes::zerar_not_attributed(){
+    this->not_attributed.nome = "not attributed";
+    for (int i =0; i<10; i++){
+        this->not_attributed.turma[i] = 0;
+    }
+}
+
 bool funcoes::isNumber(string str) {
     int i;
     for (i = 0; i < str.length(); i++) {
@@ -171,12 +178,14 @@ void funcoes::zerar_matriz() {
 void funcoes::grafo() {
     bool verifica = true;
     bool verifica2 = true;
+    bool verifica3 = true;
 
 
 
 
 
-    int turma, turmaC, proff;
+    int turma, turmaC, proff, w = 0;
+    
     for (int i = 0; i < this->linhas_matriz; i++) {
 
         for (int j = 1; j <= this->indice_colunas[i]; j++) {
@@ -215,16 +224,22 @@ void funcoes::grafo() {
             }
             if (this->resultado[proff].turma[0] == 0) {
                 this->resultado[proff].turma[0] = turma;
+                verifica3 = false;
             } else {
                 for (int p = 9; p >= 0; p--) {
                     if (this->resultado[proff].turma[p] != 0) {
                         this->resultado[proff].turma[p + 1] = turma;
+                        verifica3 = false;
                         break;
                     }
                 }
             }
             verifica = true;
-
+            if (verifica3 == true){
+                this->not_attributed.turma[w] = turma;
+                w++;
+            }
+            
         }
     }
 
