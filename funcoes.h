@@ -38,9 +38,9 @@ public:
     
     void grafo();
     void imprime_resultado();
-    void zerar_not_attributed();
+    
 private:
-    prof professores[10], resultado[10], not_attributed;
+    prof professores[10], resultado[10];
     string vetor[100];
     int cont_prof, cont_linhas, matriz[10][10], indice_colunas[10], linhas_matriz;
 
